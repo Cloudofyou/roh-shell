@@ -7,8 +7,3 @@
     commands:
     - add interface {{ myvars.ints }} mtu 9216
     - add loopback lo ip address {{ myvars.loopback }}
-
-- name: Configure NetQ
-  shell: |
-      netq config add server 10.255.7.3 vrf mgmt
-      netq config restart agent
