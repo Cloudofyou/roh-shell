@@ -1,0 +1,39 @@
+graph webscale {
+    "oob-mgmt-switch" [function="oob-switch" mgmt_ip="10.255.7.254"]
+    "oob-mgmt-server" [function="oob-server" mgmt_ip="10.255.7.1"]
+
+    "arista-1" [function="spine" os="CumulusCommunity/cumulus-vx" version="3.7.8" memory="576" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="10.255.7.30"]
+    "arista-2" [function="spine" os="CumulusCommunity/cumulus-vx" version="3.7.8" memory="576" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="10.255.7.31"]
+
+    "agg-a" [function="spine" os="CumulusCommunity/cumulus-vx" version="3.7.8" memory="576" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="10.255.7.10"]
+    "agg-b" [function="spine" os="CumulusCommunity/cumulus-vx" version="3.7.8" memory="576" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="10.255.7.11"]
+    "tor-a" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.7.8" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="10.255.7.12"]
+    "tor-b" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.7.8" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="10.255.7.13"]
+    "tor-h" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.7.8" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="10.255.7.14"]
+    "tape-1" [function="leaf" os="CumulusCommunity/cumulus-vx" version="3.7.8" memory="768" config="./helper_scripts/extra_switch_config.sh" mgmt_ip="10.255.7.15"]
+    "host-a" [function="host" os="generic/debian9" memory="768" config="./helper_scripts/extra_server_config.sh" mgmt_ip="10.255.7.20"]
+    "host-b" [function="host" os="generic/debian9" memory="768" config="./helper_scripts/extra_server_config.sh" mgmt_ip="10.255.7.21"]
+    "host-h" [function="host" os="generic/debian9" memory="768" config="./helper_scripts/extra_server_config.sh" mgmt_ip="10.255.7.22"]
+    "tape-srv1" [function="host" os="generic/debian9" memory="768" config="./helper_scripts/extra_server_config.sh" mgmt_ip="10.255.7.23"]
+
+    "arista-1":"swp1" -- "agg-a":"swp1"
+    "arista-1":"swp2" -- "agg-b":"swp1"
+    "arista-1":"swp3" -- "tape-1":"swp1"
+    "arista-2":"swp1" -- "agg-a":"swp2"
+    "arista-2":"swp2" -- "agg-b":"swp2"
+    "arista-2":"swp3" -- "tape-1":"swp2"
+
+    "tape-1":"swp3" -- "tape-srv1":"eth1"
+
+    "agg-a":"swp3" -- "tor-a":"swp1"
+    "agg-a":"swp4" -- "tor-b":"swp1"
+    "agg-a":"swp5" -- "tor-h":"swp1"
+    "agg-b":"swp3" -- "tor-a":"swp2"
+    "agg-b":"swp4" -- "tor-b":"swp2"
+    "agg-b":"swp5" -- "tor-h":"swp2"
+
+    "tor-a":"swp3" -- "host-a":"eth1"
+    "tor-b":"swp3" -- "host-a":"eth2"
+    "tor-b":"swp4" -- "host-b":"eth1"
+    "tor-h":"swp3" -- "host-h":"eth1"
+}

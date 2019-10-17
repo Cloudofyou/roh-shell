@@ -1,0 +1,29 @@
+# Created by Topology-Converter v4.7.0
+#    Template Revision: v4.7.0
+
+
+127.0.0.1 localhost 
+127.0.1.1 oob-mgmt-server
+
+10.255.7.1 oob-mgmt-server
+
+
+10.255.7.254 oob-mgmt-switch
+10.255.7.30 arista-1
+10.255.7.31 arista-2
+10.255.7.10 agg-a
+10.255.7.11 agg-b
+10.255.7.12 tor-a
+10.255.7.13 tor-b
+10.255.7.14 tor-h
+10.255.7.15 tape-1
+10.255.7.20 host-a
+10.255.7.21 host-b
+10.255.7.22 host-h
+10.255.7.23 tape-srv1
+
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

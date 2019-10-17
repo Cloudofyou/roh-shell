@@ -1,0 +1,42 @@
+# /etc/dhcp/dhcpd.hosts
+# Created by Topology-Converter v4.7.0
+#    Template Revision: v4.7.0
+#    https://github.com/cumulusnetworks/topology_converter
+#    using topology data from: ./site.dot
+
+group {
+
+  option domain-name-servers 10.255.7.1;
+  option domain-name "simulation";
+  #option routers 10.255.7.1;
+  option www-server 10.255.7.1;
+  option default-url = "http://10.255.7.1/onie-installer";
+
+
+host oob-mgmt-switch {hardware ethernet 44:38:39:00:00:3d; fixed-address 10.255.7.254; option host-name "oob-mgmt-switch"; option cumulus-provision-url "http://10.255.7.1/ztp_oob.sh";  } 
+
+host arista-1 {hardware ethernet 44:38:39:00:00:26; fixed-address 10.255.7.30; option host-name "arista-1"; option cumulus-provision-url "http://10.255.7.1/ztp_oob.sh";  } 
+
+host arista-2 {hardware ethernet 44:38:39:00:00:28; fixed-address 10.255.7.31; option host-name "arista-2"; option cumulus-provision-url "http://10.255.7.1/ztp_oob.sh";  } 
+
+host agg-a {hardware ethernet 44:38:39:00:00:2a; fixed-address 10.255.7.10; option host-name "agg-a"; option cumulus-provision-url "http://10.255.7.1/ztp_oob.sh";  } 
+
+host agg-b {hardware ethernet 44:38:39:00:00:2c; fixed-address 10.255.7.11; option host-name "agg-b"; option cumulus-provision-url "http://10.255.7.1/ztp_oob.sh";  } 
+
+host tor-a {hardware ethernet 44:38:39:00:00:2e; fixed-address 10.255.7.12; option host-name "tor-a"; option cumulus-provision-url "http://10.255.7.1/ztp_oob.sh";  } 
+
+host tor-b {hardware ethernet 44:38:39:00:00:30; fixed-address 10.255.7.13; option host-name "tor-b"; option cumulus-provision-url "http://10.255.7.1/ztp_oob.sh";  } 
+
+host tor-h {hardware ethernet 44:38:39:00:00:32; fixed-address 10.255.7.14; option host-name "tor-h"; option cumulus-provision-url "http://10.255.7.1/ztp_oob.sh";  } 
+
+host tape-1 {hardware ethernet 44:38:39:00:00:34; fixed-address 10.255.7.15; option host-name "tape-1"; option cumulus-provision-url "http://10.255.7.1/ztp_oob.sh";  } 
+
+host host-a {hardware ethernet 44:38:39:00:00:36; fixed-address 10.255.7.20; option host-name "host-a"; } 
+
+host host-b {hardware ethernet 44:38:39:00:00:38; fixed-address 10.255.7.21; option host-name "host-b"; } 
+
+host host-h {hardware ethernet 44:38:39:00:00:3a; fixed-address 10.255.7.22; option host-name "host-h"; } 
+
+host tape-srv1 {hardware ethernet 44:38:39:00:00:3c; fixed-address 10.255.7.23; option host-name "tape-srv1"; } 
+}#End of static host group
+
