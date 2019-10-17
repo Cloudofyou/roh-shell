@@ -18,21 +18,6 @@
       add bgp neighbor {{ bgp.fabints }} peer-group fabric
       {% endif %}
       
-      {% if bgp.otherints is defined %}
-      add bgp neighbor {{ bgp.otherints }} interface remote-as external
-      {% endif %}
-      
-      {% if vxlan.anycastip is defined %}
-      add bgp ipv4 unicast network {{ vxlan.anycastip }}
-      {% endif %}
-      
-      {% if vxlan.vtep is defined %}
-      add bgp l2vpn evpn neighbor fabric activate
-      {%	if vxlan.vtep == 'yes' %}
-      add bgp l2vpn evpn advertise-all-vni
-      {%	endif %}
-      {% endif %}
-      
       add routing route-map LOOPBACK permit 10 match interface lo
       add bgp ipv4 unicast redistribute connected route-map LOOPBACK
     atomic: true
