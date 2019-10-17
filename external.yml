@@ -1,7 +1,0 @@
----
-- hosts: external
-  gather_facts: no
-  become: yes
-  roles:
-  - switch-int-netq
-  - bgp-unnum
