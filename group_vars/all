@@ -51,14 +51,14 @@ swvars:
         loopback: 7.7.7.7/32
         ints: 'swp1-2'
         bgp:
-            asn: 65100
+            asn: 65101
             fabints: 'swp1-2'
 
     tor-h:
         loopback: 8.8.8.8/32
         ints: 'swp1-2'
         bgp:
-            asn: 65100
+            asn: 65102
             fabints: 'swp1-2'
 
 servervars:
